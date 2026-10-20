@@ -7,7 +7,14 @@ import { initReveal } from "@/lib/reveal";
  */
 export function useScrollReveal() {
   useEffect(() => {
-    const cleanup = initReveal();
-    return cleanup;
+    let cleanup: (() => void) | undefined;
+    const frame = requestAnimationFrame(() => {
+      cleanup = initReveal();
+    });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      cleanup?.();
+    };
   }, []);
 }

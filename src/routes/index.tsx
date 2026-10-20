@@ -51,7 +51,7 @@ export const Route = createFileRoute("/")({
 /* 3 Core Packages */
 const packages = [
   {
-    badge: "Package 01",
+    badge: "Signature package",
     title: "YouTube Content IP",
     tagline: "Turn partner thinking into signature digital intellectual property.",
     description:
@@ -61,7 +61,7 @@ const packages = [
     formats: ["Signature Series", "Partner Interviews", "Shorts & Reels", "YouTube Optimization"],
   },
   {
-    badge: "Package 02",
+    badge: "Event package",
     title: "Event Content Engine",
     tagline: "Turn 1 stage appearance into 90 days of sustained authority.",
     description:
@@ -71,7 +71,7 @@ const packages = [
     formats: ["Keynote Breakdowns", "Stage Soundbites", "Thematic Reels", "Post-Summit Memos"],
   },
   {
-    badge: "Package 03",
+    badge: "Presence package",
     title: "Omnichannel Brand Presence",
     tagline: "Substantive market presence across every critical touchpoint.",
     description:
@@ -239,22 +239,18 @@ const teamProof = [
 /* How We Think Pillars */
 const howWeThink = [
   {
-    num: "01",
     title: "The 30 seconds worth hearing",
     desc: "Finding the strongest, highest-signal idea inside long-form investor content and elevating it for immediate recall.",
   },
   {
-    num: "02",
     title: "Why we invested",
     desc: "Turning a standard portfolio announcement into clear investment reasoning, conviction, and mutual ambition that founders respect.",
   },
   {
-    num: "03",
     title: "The story behind the growth",
     desc: "Turning portfolio numbers and financial metrics into compelling human, operating, and decision-making stories.",
   },
   {
-    num: "04",
     title: "One thesis. Multiple conversations.",
     desc: "Building repeatable content systems around a firm’s strongest investment thinking to drive sustained market presence.",
   },
@@ -302,7 +298,7 @@ function Index() {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main suppressHydrationWarning>
         {/* 1. HERO */}
         <section className="hero container">
           <div className="hero-copy reveal-init">
@@ -337,13 +333,25 @@ function Index() {
             </div>
           </div>
           <div className="hero-visual reveal-init stagger-2">
-            <img
-              src={conversation}
-              width={1536}
-              height={1152}
-              alt="An editorial scene of a thoughtful investment conversation"
-              fetchPriority="high"
-            />
+            <div className="hero-media-shell">
+              <video
+                src="/hero-reference.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster={conversation}
+                aria-label="Editorial motion composition for Reframe Studios"
+              />
+              <div className="hero-media-overlay" aria-hidden="true" />
+              <div className="hero-micro-card">
+                <span className="status-dot" /> PRIVATE MARKETS. PREMIUM STORYTELLING.
+              </div>
+              <div className="hero-metric">
+                <strong>12+ yrs</strong>
+                <span>story-led momentum</span>
+              </div>
+            </div>
             <span className="image-frame top-frame" />
             <span className="image-frame bottom-frame" />
             <div className="photo-caption">
@@ -375,7 +383,7 @@ function Index() {
         {/* 2. THE PROBLEM */}
         <section id="problem" className="problem section container">
           <div className="section-top reveal-init">
-            <span className="eyebrow">01 / THE PROBLEM</span>
+            <span className="eyebrow">The problem</span>
             <span className="section-note">There’s more to your story.</span>
           </div>
           <div className="two-column reveal-init">
@@ -412,7 +420,6 @@ function Index() {
               <div className={`source-item reveal-init stagger-${(i % 4) + 1}`} key={title}>
                 <Icon size={21} strokeWidth={1.3} />
                 <span>{title}</span>
-                <small>0{i + 1}</small>
               </div>
             ))}
           </div>
@@ -422,7 +429,7 @@ function Index() {
         <section id="services" className="services-section section">
           <div className="container">
             <div className="section-top reveal-init">
-              <span className="eyebrow">02 / WHAT REFRAME DOES</span>
+              <span className="eyebrow">What Reframe does</span>
               <span className="section-note">Built for private markets.</span>
             </div>
             <div className="section-heading-row reveal-init">
@@ -490,7 +497,6 @@ function Index() {
                         aria-controls={`service-${i}`}
                         onClick={() => setExpanded(expanded === i ? null : i)}
                       >
-                        <span className="service-number">0{i + 1}</span>
                         <span>{title}</span>
                         {expanded === i ? <Minus /> : <Plus />}
                       </Button>
@@ -514,7 +520,7 @@ function Index() {
         {/* 4. THE REFRAME WAY */}
         <section id="approach" className="section container">
           <div className="section-top reveal-init">
-            <span className="eyebrow">03 / THE REFRAME WAY</span>
+            <span className="eyebrow">The Reframe way</span>
             <span className="section-note">Same source. A different story.</span>
           </div>
           <div className="section-heading-row reveal-init">
@@ -578,7 +584,7 @@ function Index() {
         {/* 5. POSITIONING SECTION */}
         <section className="positioning">
           <div className="container reveal-init">
-            <span className="eyebrow">04 / STRATEGY BEFORE THE SCHEDULE</span>
+            <span className="eyebrow">Strategy before the schedule</span>
             <h2>
               Not another
               <br />
@@ -620,7 +626,7 @@ function Index() {
         {/* 6. ONE IDEA, MORE VALUE */}
         <section className="section container">
           <div className="section-top reveal-init">
-            <span className="eyebrow">05 / ONE IDEA, MORE VALUE</span>
+            <span className="eyebrow">One idea, more value</span>
             <span className="section-note">Make your thinking work harder.</span>
           </div>
           <div className="section-heading-row reveal-init">
@@ -672,7 +678,7 @@ function Index() {
         {/* 7. WHO WE WORK WITH */}
         <section className="section container">
           <div className="section-top reveal-init">
-            <span className="eyebrow">06 / WHO WE WORK WITH</span>
+            <span className="eyebrow">Who we work with</span>
             <span className="section-note">Aligned with private capital.</span>
           </div>
           <div className="section-heading-row reveal-init">
@@ -689,7 +695,7 @@ function Index() {
           <div className="who-grid">
             {whoWeWorkWith.map((item, i) => (
               <div className={`who-card reveal-init stagger-${i + 1}`} key={item.category}>
-                <span className="eyebrow">0{i + 1} / SECTOR</span>
+                <span className="eyebrow">Sector focus</span>
                 <h3>{item.category}</h3>
                 <p>{item.desc}</p>
               </div>
@@ -700,7 +706,7 @@ function Index() {
         {/* 8. WHY REFRAME */}
         <section className="outcomes section">
           <div className="container">
-            <span className="eyebrow reveal-init">07 / WHY REFRAME</span>
+            <span className="eyebrow reveal-init">Why Reframe</span>
             <div className="section-heading-row reveal-init">
               <div>
                 <h2>Content with commercial context.</h2>
@@ -721,7 +727,7 @@ function Index() {
                   className={`border-t border-primary pt-5 reveal-init stagger-${i + 1}`}
                 >
                   <span className="text-[10px] text-muted-foreground uppercase tracking-wider">
-                    0{i + 1} / IMPACT
+                    Impact
                   </span>
                   <h3 className="font-editorial text-2xl mt-3">{item.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed mt-2">{item.copy}</p>
@@ -734,7 +740,7 @@ function Index() {
         {/* 9. WORK / PROOF */}
         <section id="work" className="section container">
           <div className="section-top reveal-init">
-            <span className="eyebrow">08 / WORK & PROOF</span>
+            <span className="eyebrow">Work & proof</span>
             <span className="section-note">Different sectors. Same principle.</span>
           </div>
           <div className="section-heading-row reveal-init">
@@ -820,7 +826,7 @@ function Index() {
         <section id="about" className="about-section section">
           <div className="container two-column reveal-init">
             <div>
-              <span className="eyebrow">09 / ABOUT REFRAME</span>
+              <span className="eyebrow">About Reframe</span>
               <h2>
                 A content studio.
                 <br />
@@ -855,7 +861,7 @@ function Index() {
         {/* 11. TEAM SECTION */}
         <section id="team" className="section container">
           <div className="section-top reveal-init">
-            <span className="eyebrow">10 / THE TEAM</span>
+            <span className="eyebrow">The team</span>
             <span className="section-note">The people behind Reframe.</span>
           </div>
           <div className="section-heading-row reveal-init">
@@ -886,7 +892,7 @@ function Index() {
         {/* 12. HOW WE THINK */}
         <section id="insights" className="section container">
           <div className="section-top reveal-init">
-            <span className="eyebrow">11 / HOW WE THINK</span>
+            <span className="eyebrow">How we think</span>
             <span className="section-note">Editorial principles.</span>
           </div>
           <div className="section-heading-row reveal-init">
@@ -903,8 +909,7 @@ function Index() {
           </div>
           <div className="how-grid">
             {howWeThink.map((item, i) => (
-              <div className={`how-card reveal-init stagger-${i + 1}`} key={item.num}>
-                <span className="how-num">{item.num} / PRINCIPLE</span>
+              <div className={`how-card reveal-init stagger-${i + 1}`} key={item.title}>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
@@ -915,7 +920,7 @@ function Index() {
         {/* 13. FINAL CTA */}
         <section className="final-cta-section">
           <div className="container max-w-3xl reveal-init">
-            <span className="eyebrow">12 / LET’S START A CONVERSATION</span>
+            <span className="eyebrow">Let’s start a conversation</span>
             <h2>
               There is probably a better story
               <br />

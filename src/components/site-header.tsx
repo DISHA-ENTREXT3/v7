@@ -18,14 +18,22 @@ export function Brand() {
 }
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const navItems = [
+    { label: "Approach", to: "/approach" },
+    { label: "Services", to: "/services" },
+    { label: "Work", to: "/work" },
+    { label: "About", to: "/about" },
+    { label: "Team", to: "/team" },
+  ];
+
   return (
     <header className="site-header">
       <div className="header-inner">
         <Brand />
         <nav className="desktop-nav" aria-label="Main navigation">
-          {["Approach", "Services", "Work", "About", "Team"].map((item) => (
-            <Link key={item} to="/" hash={item.toLowerCase()}>
-              {item}
+          {navItems.map((item) => (
+            <Link key={item.label} to={item.to}>
+              {item.label}
             </Link>
           ))}
         </nav>
@@ -50,9 +58,9 @@ export function SiteHeader() {
       </div>
       {open && (
         <nav id="mobile-nav" className="mobile-nav" aria-label="Mobile navigation">
-          {["Approach", "Services", "Work", "About", "Team"].map((item) => (
-            <Link key={item} to="/" hash={item.toLowerCase()} onClick={() => setOpen(false)}>
-              {item}
+          {navItems.map((item) => (
+            <Link key={item.label} to={item.to} onClick={() => setOpen(false)}>
+              {item.label}
               <ArrowUpRight size={18} />
             </Link>
           ))}
